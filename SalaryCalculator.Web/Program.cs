@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SalaryCalculator.Web.UseCases.GetEmployees;
+using SalaryCalculator.Web.UseCases.SaveEmployeeSatisfactoryScore;
 using Serilog;
 using Serilog.Events;
 using ILogger = Serilog.ILogger;
@@ -44,6 +45,7 @@ namespace SalaryCalculator.Web
                 .ConfigureServices(services => 
                 {
                     services.AddGetEmployeesUseCase();
+                    services.AddSaveEmployeeSatisfactoryScoreUseCase();
                     
                 }).UseSerilog(logger: Log.Logger);
 

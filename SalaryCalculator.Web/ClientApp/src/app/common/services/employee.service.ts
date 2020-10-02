@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Employee } from "../Models/employee.model";
+import { SaveEmployeeSatisfactoryScore } from "../Models/saveEmployeeSatisfacoryScore.model";
 
 
 @Injectable()
@@ -17,8 +18,11 @@ export class EmployeeService
 
     }
 
-    getEmployees(): Observable<Employee[]> 
-    {
+    getEmployees(): Observable<Employee[]> {
         return this._http.get<Employee[]>(this._employeeEndPoint);
+    }
+
+    saveEmployeeSatisfactoryScore(model: SaveEmployeeSatisfactoryScore) {
+        return this._http.post(`${this._employeeEndPoint}/satisfactory-score`, model);
     }
 }

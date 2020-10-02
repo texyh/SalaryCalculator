@@ -31,6 +31,7 @@ namespace SalaryCalculator.Web.UseCases
 
                 employeeDetails.Add(new EmployeeDetails
                 {
+                    Id = employee.Id,
                     Email = employee.Email,
                     Experience = employee.Experience,
                     Name = employee.Name,

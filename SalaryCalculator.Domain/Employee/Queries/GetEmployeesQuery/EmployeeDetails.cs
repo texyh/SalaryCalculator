@@ -6,6 +6,8 @@ namespace SalaryCalculator.Domain.Employee.Queries.GetEmployeesQuery
 {
     public class EmployeeDetails
     {
+        public Guid Id { get; set;}
+
         public string Name { get; set; }
 
         public string Email { get; set; }
