@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <Folder Include="Employee\Commands\" />
-    <Folder Include="Employee\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
 
 </Project>

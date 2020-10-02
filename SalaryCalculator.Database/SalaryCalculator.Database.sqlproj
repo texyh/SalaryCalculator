@@ -58,13 +58,22 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
+    <Folder Include="PostDeployment" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Employee.sql" />
-    <Build Include="dbo\Tables\Position.sql" />
-    <Build Include="dbo\Tables\SalaryCategory.sql" />
+    <Build Include="dbo\Tables\Employees.sql" />
+    <Build Include="dbo\Tables\Positions.sql" />
+    <Build Include="dbo\Tables\SalaryCategories.sql" />
+    <Build Include="dbo\Tables\SatisfactoryScores.sql" />
+    <None Include="PostDeployment\000_Positions.sql" />
+    <None Include="PostDeployment\002_Employees.sql" />
+    <None Include="PostDeployment\001_SalaryCategories.sql" />
+    <None Include="PostDeployment\003_SatisfactoryScores.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SalaryCalculator.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeployment.sql" />
   </ItemGroup>
 </Project>

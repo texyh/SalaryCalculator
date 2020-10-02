@@ -10,5 +10,7 @@ namespace SalaryCalculator.Domain.Employee
         public DateTime Year { get;set; }
 
         public Guid EmployeeId { get; set;}
+
+        public virtual Employee Employee { get; set; }
     }
 }

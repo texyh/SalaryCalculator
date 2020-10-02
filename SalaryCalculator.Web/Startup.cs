@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +6,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SalaryCalculator.Web.Middleware;
+using Serilog;
 
 namespace SalaryCalculator.Web
 {
@@ -26,21 +29,18 @@ namespace SalaryCalculator.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddSwagger()
+                    .AddDatabase(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseHsts();
+
+            var logger = serviceProvider.GetService<ILogger>();
+
+            app.UseExceptionHandler(builder => builder.HandleExceptions(logger, env));
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -48,6 +48,12 @@ namespace SalaryCalculator.Web
             {
                 app.UseSpaStaticFiles();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+            });
 
             app.UseRouting();
 

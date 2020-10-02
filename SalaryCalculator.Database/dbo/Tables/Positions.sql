@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Position]
+﻿CREATE TABLE [dbo].[Positions]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [Name] NVARCHAR(50) NOT NULL
