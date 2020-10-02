@@ -20,13 +20,13 @@ export class AddSatisfactoryScoreComponent implements OnInit {
 
   onSubmit() {
     this.error = null;
-    this._employeeService.saveEmployeeSatisfactoryScore( 
-      {employeeId : this.employee.id, score: this.score})
+    this._employeeService.saveEmployeeSatisfactoryScore(
+      { employeeId: this.employee.id, score: this.score })
       .subscribe(x => {
-      this.bsModalRef.hide();
-    }, err => {
-      this.error = err;
-    })  
+        this.bsModalRef.hide();
+      }, err => {
+        this.error = err;
+      })
   }
 
 }

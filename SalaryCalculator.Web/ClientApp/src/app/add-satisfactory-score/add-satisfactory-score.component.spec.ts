@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { EmployeeService } from '../common/services/employee.service';
 
 import { AddSatisfactoryScoreComponent } from './add-satisfactory-score.component';
 
@@ -8,7 +10,9 @@ describe('AddSatisfactoryScoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddSatisfactoryScoreComponent ]
+      declarations: [ AddSatisfactoryScoreComponent ],
+      imports: [ModalModule.forRoot()],
+      providers: [{provide: EmployeeService, useValue: {}}]
     })
     .compileComponents();
   }));
@@ -16,7 +20,6 @@ describe('AddSatisfactoryScoreComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddSatisfactoryScoreComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
